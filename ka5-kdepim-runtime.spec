@@ -1,19 +1,21 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c42f836cc8a91921214a0c00ddc03cd9
+# Source0-md5:	5323ef81370c1712bdc9fc7ae9e0956a
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Gui-devel >= 5.11.1
 BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5NetworkAuth-devel
 BuildRequires:	Qt5Positioning-devel >= 5.11.1
 BuildRequires:	Qt5PrintSupport-devel >= 5.11.1
 BuildRequires:	Qt5Qml-devel >= 5.11.1
@@ -44,21 +46,22 @@ BuildRequires:	ka5-kmbox-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkgapi-devel >= %{kdeappsver}
 BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
-BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
-BuildRequires:	kf5-kcodecs-devel >= 5.51.0
-BuildRequires:	kf5-kconfig-devel >= 5.51.0
-BuildRequires:	kf5-kconfigwidgets-devel >= 5.51.0
-BuildRequires:	kf5-kdbusaddons-devel >= 5.51.0
-BuildRequires:	kf5-kdelibs4support-devel >= 5.51.0
-BuildRequires:	kf5-kdoctools-devel >= 5.51.0
-BuildRequires:	kf5-kholidays-devel >= 5.51.0
-BuildRequires:	kf5-kiconthemes-devel >= 5.51.0
-BuildRequires:	kf5-kio-devel >= 5.51.0
-BuildRequires:	kf5-kitemmodels-devel >= 5.51.0
-BuildRequires:	kf5-knotifications-devel >= 5.51.0
-BuildRequires:	kf5-knotifyconfig-devel >= 5.51.0
-BuildRequires:	kf5-ktextwidgets-devel >= 5.51.0
-BuildRequires:	kf5-kwindowsystem-devel >= 5.51.0
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcodecs-devel >= %{kframever}
+BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf5-kdelibs4support-devel >= %{kframever}
+BuildRequires:	kf5-kdoctools-devel >= %{kframever}
+BuildRequires:	kf5-kholidays-devel >= %{kframever}
+BuildRequires:	kf5-kiconthemes-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-kitemmodels-devel >= %{kframever}
+BuildRequires:	kf5-knotifications-devel >= %{kframever}
+BuildRequires:	kf5-knotifyconfig-devel >= %{kframever}
+BuildRequires:	kf5-ktextwidgets-devel >= %{kframever}
+BuildRequires:	kf5-kwindowsystem-devel >= %{kframever}
+BuildRequires:	libkolabxml-devel >= 1.1
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
 BuildRequires:	qt5-build >= %{qtver}
@@ -80,6 +83,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
@@ -88,6 +92,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr
 %find_lang %{kaname} --all-name --with-kde
 
 %clean
@@ -112,9 +117,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadi_ical_resource
 %attr(755,root,root) %{_bindir}/akonadi_icaldir_resource
 %attr(755,root,root) %{_bindir}/akonadi_imap_resource
-%attr(755,root,root) %{_bindir}/akonadi_invitations_agent
+#%%attr(755,root,root) %{_bindir}/akonadi_invitations_agent
 %attr(755,root,root) %{_bindir}/akonadi_kalarm_dir_resource
 %attr(755,root,root) %{_bindir}/akonadi_kalarm_resource
+%attr(755,root,root) %{_bindir}/akonadi_kolab_resource
 %attr(755,root,root) %{_bindir}/akonadi_maildir_resource
 %attr(755,root,root) %{_bindir}/akonadi_maildispatcher_agent
 %attr(755,root,root) %{_bindir}/akonadi_mbox_resource
@@ -140,6 +146,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmaildir.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/akonadi.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/pop3.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/akonotesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/birthdaysconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/contactsconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/facebookconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icalconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icaldirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/kalarmconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildispatcherconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/mboxconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/mixedmaildirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/newmailnotifierconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/notesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/openxchangeconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/pop3config.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/tomboynotesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/vcardconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/vcarddirconfig.so
 %{_datadir}/akonadi/accountwizard
 %{_datadir}/akonadi/agents
 %{_datadir}/akonadi/firstrun
