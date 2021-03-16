@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	5323ef81370c1712bdc9fc7ae9e0956a
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	d1c1c6a6c3a7752d921d4a3078ec8017
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -35,10 +35,7 @@ BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-mime-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-notes-devel >= %{kdeappsver}
 BuildRequires:	ka5-kalarmcal-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcalcore-devel >= %{kdeappsver}
 BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
-BuildRequires:	ka5-kcontacts-devel >= %{kdeappsver}
-BuildRequires:	ka5-kdav-devel >= %{kdeappsver}
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-kimap-devel >= %{kdeappsver}
 BuildRequires:	ka5-kmailtransport-devel >= %{kdeappsver}
@@ -47,9 +44,12 @@ BuildRequires:	ka5-kmime-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkgapi-devel >= %{kdeappsver}
 BuildRequires:	ka5-pimcommon-devel >= %{kdeappsver}
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcalendarcore-devel >= %{kframever}
 BuildRequires:	kf5-kcodecs-devel >= %{kframever}
 BuildRequires:	kf5-kconfig-devel >= %{kframever}
 BuildRequires:	kf5-kconfigwidgets-devel >= %{kframever}
+BuildRequires:	kf5-kcontacts-devel >= %{kframever}
+BuildRequires:	kf5-kdav-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kdelibs4support-devel >= %{kframever}
 BuildRequires:	kf5-kdoctools-devel >= %{kframever}
@@ -92,7 +92,7 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/sr
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{ko,sr}
 %find_lang %{kaname} --all-name --with-kde
 
 %clean
@@ -103,21 +103,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kdepim-runtime.categories
-/etc/xdg/kdepim-runtime.renamecategories
+%attr(755,root,root) %{_bindir}/akonadi_google_resource
+%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_ldap.so
+%{_datadir}/knotifications5/akonadi_google_resource.notifyrc
+%{_datadir}/kservices5/kcmldap.desktop
 %attr(755,root,root) %{_bindir}/akonadi_akonotes_resource
 %attr(755,root,root) %{_bindir}/akonadi_birthdays_resource
 %attr(755,root,root) %{_bindir}/akonadi_contacts_resource
 %attr(755,root,root) %{_bindir}/akonadi_davgroupware_resource
 %attr(755,root,root) %{_bindir}/akonadi_ews_resource
 %attr(755,root,root) %{_bindir}/akonadi_ewsmta_resource
-%attr(755,root,root) %{_bindir}/akonadi_facebook_resource
-%attr(755,root,root) %{_bindir}/akonadi_googlecalendar_resource
-%attr(755,root,root) %{_bindir}/akonadi_googlecontacts_resource
 %attr(755,root,root) %{_bindir}/akonadi_ical_resource
 %attr(755,root,root) %{_bindir}/akonadi_icaldir_resource
 %attr(755,root,root) %{_bindir}/akonadi_imap_resource
-#%%attr(755,root,root) %{_bindir}/akonadi_invitations_agent
 %attr(755,root,root) %{_bindir}/akonadi_kalarm_dir_resource
 %attr(755,root,root) %{_bindir}/akonadi_kalarm_resource
 %attr(755,root,root) %{_bindir}/akonadi_kolab_resource
@@ -146,10 +144,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmaildir.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/akonadi.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/pop3.so
+%dir %{_libdir}/qt5/plugins/akonadi/config
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/akonotesconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/birthdaysconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/contactsconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/facebookconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icalconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icaldirconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/kalarmconfig.so
@@ -188,6 +186,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/knotifications5/akonadi_newmailnotifier_agent.notifyrc
 %{_datadir}/knotifications5/akonadi_pop3_resource.notifyrc
 %{_datadir}/kservices5/akonadi.protocol
+%dir %{_datadir}/kservices5/akonadi
 %dir %{_datadir}/kservices5/akonadi/davgroupware-providers
 %{_datadir}/kservices5/akonadi/davgroupware-providers/citadel.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/davical.desktop
@@ -206,3 +205,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/pop3s.protocol
 %{_datadir}/kservicetypes5/davgroupwareprovider.desktop
 %{_datadir}/mime/packages/kdepim-mime.xml
+%{_datadir}/qlogging-categories5/kdepim-runtime.categories
+%{_datadir}/qlogging-categories5/kdepim-runtime.renamecategories
