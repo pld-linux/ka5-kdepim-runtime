@@ -1,15 +1,15 @@
-%define		kdeappsver	21.04.0
+%define		kdeappsver	21.04.1
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	21.04.0
+Version:	21.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cb159f0d0ec85eb1fe8e3c0b37d90517
+# Source0-md5:	84967eef21eab30d7ddf898799352934
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -132,15 +132,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadi_vcard_resource
 %attr(755,root,root) %{_bindir}/akonadi_vcarddir_resource
 %attr(755,root,root) %{_bindir}/gidmigrator
-%attr(755,root,root) %ghost %{_libdir}/libakonadi-filestore.so.5
+%ghost %{_libdir}/libakonadi-filestore.so.5
 %attr(755,root,root) %{_libdir}/libakonadi-filestore.so.5.*.*
-%attr(755,root,root) %ghost %{_libdir}/libakonadi-singlefileresource.so.5
+%ghost %{_libdir}/libakonadi-singlefileresource.so.5
 %attr(755,root,root) %{_libdir}/libakonadi-singlefileresource.so.5.*.*
-%attr(755,root,root) %ghost %{_libdir}/libfolderarchivesettings.so.5
+%ghost %{_libdir}/libfolderarchivesettings.so.5
 %attr(755,root,root) %{_libdir}/libfolderarchivesettings.so.5.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkmindexreader.so.5
+%ghost %{_libdir}/libkmindexreader.so.5
 %attr(755,root,root) %{_libdir}/libkmindexreader.so.5.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmaildir.so.5
+%ghost %{_libdir}/libmaildir.so.5
 %attr(755,root,root) %{_libdir}/libmaildir.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/akonadi.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/pop3.so
