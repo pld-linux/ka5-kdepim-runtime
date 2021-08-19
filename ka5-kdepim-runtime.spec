@@ -1,15 +1,15 @@
-%define		kdeappsver	21.04.3
+%define		kdeappsver	21.08.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	21.04.3
+Version:	21.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a0d2613b9fc7b8481c96f67b5b71725a
+# Source0-md5:	a38b5eed5af7cd1cf8bf3d8e64031de7
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -104,7 +104,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadi_google_resource
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_ldap.so
 %{_datadir}/knotifications5/akonadi_google_resource.notifyrc
 %{_datadir}/kservices5/kcmldap.desktop
 %attr(755,root,root) %{_bindir}/akonadi_akonotes_resource
@@ -185,7 +184,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/knotifications5/akonadi_maildispatcher_agent.notifyrc
 %{_datadir}/knotifications5/akonadi_newmailnotifier_agent.notifyrc
 %{_datadir}/knotifications5/akonadi_pop3_resource.notifyrc
-%{_datadir}/kservices5/akonadi.protocol
 %dir %{_datadir}/kservices5/akonadi
 %dir %{_datadir}/kservices5/akonadi/davgroupware-providers
 %{_datadir}/kservices5/akonadi/davgroupware-providers/citadel.desktop
@@ -201,9 +199,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/akonadi/davgroupware-providers/yahoo.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/zarafa.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/zimbra.desktop
-%{_datadir}/kservices5/pop3.protocol
-%{_datadir}/kservices5/pop3s.protocol
 %{_datadir}/kservicetypes5/davgroupwareprovider.desktop
 %{_datadir}/mime/packages/kdepim-mime.xml
 %{_datadir}/qlogging-categories5/kdepim-runtime.categories
 %{_datadir}/qlogging-categories5/kdepim-runtime.renamecategories
+%{_libdir}/qt5/plugins/pim/kcms/kaddressbook/kcm_ldap.so
