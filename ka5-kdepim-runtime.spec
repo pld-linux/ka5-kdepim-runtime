@@ -1,15 +1,15 @@
-%define		kdeappsver	21.08.3
+%define		kdeappsver	21.12.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	21.08.3
+Version:	21.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a57d838a610c860f88fc4261031adff8
+# Source0-md5:	d415f0f92c4378db65ded21e75b81f9c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -142,7 +142,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libmaildir.so.5
 %attr(755,root,root) %{_libdir}/libmaildir.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/akonadi.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/pop3.so
 %dir %{_libdir}/qt5/plugins/akonadi/config
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/akonotesconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/birthdaysconfig.so
