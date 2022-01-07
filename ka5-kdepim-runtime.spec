@@ -1,15 +1,15 @@
-%define		kdeappsver	21.12.0
+%define		kdeappsver	21.12.1
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	21.12.0
+Version:	21.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d415f0f92c4378db65ded21e75b81f9c
+# Source0-md5:	c4d2a6b3d84e937c1b675867a1341cbe
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
