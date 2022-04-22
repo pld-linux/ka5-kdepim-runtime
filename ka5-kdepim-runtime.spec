@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	21.12.3
+%define		kdeappsver	22.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	21.12.3
+Version:	22.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	52a4335ca9fd87248689126fd4552577
+# Source0-md5:	1c22a052603e88f125e35ef5d628a4b4
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -37,7 +37,6 @@ BuildRequires:	ka5-akonadi-contacts-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-mime-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-notes-devel >= %{kdeappsver}
-BuildRequires:	ka5-kalarmcal-devel >= %{kdeappsver}
 BuildRequires:	ka5-kcalutils-devel >= %{kdeappsver}
 BuildRequires:	ka5-kidentitymanagement-devel >= %{kdeappsver}
 BuildRequires:	ka5-kimap-devel >= %{kdeappsver}
@@ -124,8 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadi_ical_resource
 %attr(755,root,root) %{_bindir}/akonadi_icaldir_resource
 %attr(755,root,root) %{_bindir}/akonadi_imap_resource
-%attr(755,root,root) %{_bindir}/akonadi_kalarm_dir_resource
-%attr(755,root,root) %{_bindir}/akonadi_kalarm_resource
 %attr(755,root,root) %{_bindir}/akonadi_kolab_resource
 %attr(755,root,root) %{_bindir}/akonadi_maildir_resource
 %attr(755,root,root) %{_bindir}/akonadi_maildispatcher_agent
@@ -157,7 +154,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/contactsconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icalconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icaldirconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/kalarmconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildirconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildispatcherconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/mboxconfig.so
