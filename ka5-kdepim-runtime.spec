@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.04.3
+%define		kdeappsver	22.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	22.04.3
+Version:	22.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	801fb3564ee25d389246e98ce488b5fc
+# Source0-md5:	bf4b12f31263aeec368643b4ae902c5d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -114,7 +114,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadi_google_resource
 %{_datadir}/knotifications5/akonadi_google_resource.notifyrc
-%{_datadir}/kservices5/kcmldap.desktop
 %attr(755,root,root) %{_bindir}/akonadi_akonotes_resource
 %attr(755,root,root) %{_bindir}/akonadi_birthdays_resource
 %attr(755,root,root) %{_bindir}/akonadi_contacts_resource
@@ -149,23 +148,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libmaildir.so.5
 %attr(755,root,root) %{_libdir}/libmaildir.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kio/akonadi.so
-%dir %{_libdir}/qt5/plugins/akonadi/config
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/akonotesconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/birthdaysconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/contactsconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icalconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/icaldirconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildirconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/maildispatcherconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/mboxconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/mixedmaildirconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/newmailnotifierconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/notesconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/openxchangeconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/pop3config.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/tomboynotesconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/vcardconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/akonadi/config/vcarddirconfig.so
 %{_datadir}/akonadi/accountwizard
 %{_datadir}/akonadi/agents
 %{_datadir}/akonadi/firstrun
@@ -208,4 +190,25 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mime/packages/kdepim-mime.xml
 %{_datadir}/qlogging-categories5/kdepim-runtime.categories
 %{_datadir}/qlogging-categories5/kdepim-runtime.renamecategories
-%{_libdir}/qt5/plugins/pim/kcms/kaddressbook/kcm_ldap.so
+%dir %{_libdir}/qt5/plugins/pim5/akonadi/config
+%{_libdir}/qt5/plugins/pim5/akonadi/config/akonotesconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/birthdaysconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/contactsconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/icalconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/icaldirconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/maildirconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/maildispatcherconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/mboxconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/mixedmaildirconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/newmailnotifierconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/notesconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/openxchangeconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/pop3config.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/tomboynotesconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/vcardconfig.so
+%{_libdir}/qt5/plugins/pim5/akonadi/config/vcarddirconfig.so
+%{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kcm_ldap.so
+%{_desktopdir}/org.kde.akonadi_davgroupware_resource.desktop
+%{_desktopdir}/org.kde.akonadi_google_resource.desktop
+%{_desktopdir}/org.kde.akonadi_imap_resource.desktop
+%{_desktopdir}/org.kde.akonadi_kolab_resource.desktop
