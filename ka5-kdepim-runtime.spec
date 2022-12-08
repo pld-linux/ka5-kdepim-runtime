@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.08.3
+%define		kdeappsver	22.12.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	ebba51df546ad8af258f28281a7a80af
+# Source0-md5:	a07bbf08a8c3a7facde92c808893c02b
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -186,7 +186,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/akonadi/davgroupware-providers/yahoo.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/zarafa.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/zimbra.desktop
-%{_datadir}/kservicetypes5/davgroupwareprovider.desktop
 %{_datadir}/mime/packages/kdepim-mime.xml
 %{_datadir}/qlogging-categories5/kdepim-runtime.categories
 %{_datadir}/qlogging-categories5/kdepim-runtime.renamecategories
