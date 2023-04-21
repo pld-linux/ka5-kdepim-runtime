@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f4f235f6a1b7e1ad344241c9072c337b
+# Source0-md5:	6fe7b461f4679c5a97d279720fcc9c97
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -190,24 +190,25 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories5/kdepim-runtime.categories
 %{_datadir}/qlogging-categories5/kdepim-runtime.renamecategories
 %dir %{_libdir}/qt5/plugins/pim5/akonadi/config
-%{_libdir}/qt5/plugins/pim5/akonadi/config/akonotesconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/birthdaysconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/contactsconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/icalconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/icaldirconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/maildirconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/maildispatcherconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/mboxconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/mixedmaildirconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/newmailnotifierconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/notesconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/openxchangeconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/pop3config.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/tomboynotesconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/vcardconfig.so
-%{_libdir}/qt5/plugins/pim5/akonadi/config/vcarddirconfig.so
-%{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kcm_ldap.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/akonotesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/birthdaysconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/contactsconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/icalconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/icaldirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/maildirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/maildispatcherconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/mboxconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/mixedmaildirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/newmailnotifierconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/notesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/openxchangeconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/pop3config.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/tomboynotesconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcardconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcarddirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kcm_ldap.so
 %{_desktopdir}/org.kde.akonadi_davgroupware_resource.desktop
 %{_desktopdir}/org.kde.akonadi_google_resource.desktop
 %{_desktopdir}/org.kde.akonadi_imap_resource.desktop
 %{_desktopdir}/org.kde.akonadi_kolab_resource.desktop
+%{_datadir}/kservices5/akonadi/davgroupware-providers/mailbox-org.desktop
