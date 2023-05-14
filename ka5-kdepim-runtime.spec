@@ -8,7 +8,7 @@
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
 Version:	23.04.1
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadi_birthdays_resource
 %attr(755,root,root) %{_bindir}/akonadi_contacts_resource
 %attr(755,root,root) %{_bindir}/akonadi_davgroupware_resource
+%attr(755,root,root) %{_bindir}/akonadi_etesync_resource
 %attr(755,root,root) %{_bindir}/akonadi_ews_resource
 %attr(755,root,root) %{_bindir}/akonadi_ewsmta_resource
 %attr(755,root,root) %{_bindir}/akonadi_ical_resource
@@ -153,20 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/akonadi/firstrun
 %{_datadir}/dbus-1/interfaces/org.kde.Akonadi.Maildir.Settings.xml
 %{_datadir}/dbus-1/interfaces/org.kde.Akonadi.MixedMaildir.Settings.xml
-%{_iconsdir}/hicolor/128x128/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/128x128/apps/ox.png
-%{_iconsdir}/hicolor/16x16/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/16x16/apps/ox.png
-%{_iconsdir}/hicolor/22x22/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/24x24/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/32x32/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/32x32/apps/ox.png
-%{_iconsdir}/hicolor/48x48/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/48x48/apps/ox.png
-%{_iconsdir}/hicolor/64x64/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/64x64/apps/ox.png
-%{_iconsdir}/hicolor/72x72/apps/akonadi-ews.png
-%{_iconsdir}/hicolor/96x96/apps/akonadi-ews.png
+%{_iconsdir}/hicolor/*x*/apps/*.png
 %{_datadir}/knotifications5/akonadi_ews_resource.notifyrc
 %{_datadir}/knotifications5/akonadi_maildispatcher_agent.notifyrc
 %{_datadir}/knotifications5/akonadi_newmailnotifier_agent.notifyrc
