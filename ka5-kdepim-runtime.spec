@@ -67,6 +67,7 @@ BuildRequires:	libetebase-devel
 BuildRequires:	libkolabxml-devel >= 1.1
 BuildRequires:	libxslt-progs
 BuildRequires:	ninja
+BuildRequires:	qca-qt5-devel
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
