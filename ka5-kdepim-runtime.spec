@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.04.3
+%define		kdeappsver	23.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	23.04.3
-Release:	2
+Version:	23.08.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	8192ba8e84cf03c2522e3a2ccfcecd8b
+# Source0-md5:	f8c9b2c31bd73789c1a0c49971056e7c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -29,7 +29,7 @@ BuildRequires:	Qt5WebChannel-devel >= 5.11.1
 BuildRequires:	Qt5WebEngine-devel >= 5.11.1
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	Qt5XmlPatterns-devel
-BuildRequires:	cmake >= 2.8.12
+BuildRequires:	cmake >= 3.20
 BuildRequires:	cyrus-sasl-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ka5-akonadi-calendar-devel >= %{kdeappsver}
@@ -84,18 +84,16 @@ agents written using KDE Development Platform libraries.
 %setup -q -n %{kaname}-%{version}
 
 %build
-install -d build
-cd build
 %cmake \
+	-B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	..
-%ninja_build
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+%ninja_build -C build
 
 %if %{with tests}
-ctest
+ctest --test-dir build
 %endif
 
 
@@ -196,9 +194,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/tomboynotesconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcardconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcarddirconfig.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/googleconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kcm_ldap.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/mailtransport/mailtransport_akonadiplugin.so
 %{_desktopdir}/org.kde.akonadi_davgroupware_resource.desktop
 %{_desktopdir}/org.kde.akonadi_google_resource.desktop
 %{_desktopdir}/org.kde.akonadi_imap_resource.desktop
 %{_desktopdir}/org.kde.akonadi_kolab_resource.desktop
 %{_datadir}/kservices5/akonadi/davgroupware-providers/mailbox-org.desktop
+%{_desktopdir}/org.kde.akonadi_contacts_resource.desktop
+%{_desktopdir}/org.kde.akonadi_ews_resource.desktop
+%{_desktopdir}/org.kde.akonadi_openxchange_resource.desktop
+%{_desktopdir}/org.kde.akonadi_vcard_resource.desktop
+%{_desktopdir}/org.kde.akonadi_vcarddir_resource.desktop
