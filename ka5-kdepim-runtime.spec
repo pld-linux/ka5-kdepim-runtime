@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.0
+%define		kdeappsver	23.08.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kdepim-runtime
 Summary:	kdepim runtime
 Name:		ka5-%{kaname}
-Version:	23.08.0
+Version:	23.08.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f8c9b2c31bd73789c1a0c49971056e7c
+# Source0-md5:	a26e34ba3dbcf92ca5fdb792dc17150f
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -194,7 +194,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/tomboynotesconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcardconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/vcarddirconfig.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/akonadi/config/googleconfig.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kcm_ldap.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/pim5/mailtransport/mailtransport_akonadiplugin.so
 %{_desktopdir}/org.kde.akonadi_davgroupware_resource.desktop
